@@ -4,20 +4,18 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { useSearchParams } from "next/navigation";
-import { PokeType } from "../../types";
+import { PokeType } from "../types";
 import Question from "@/components/question/Question";
 import Result from "@/components/question/Result";
 
-interface Props {
-  params: {
-    q: string;
-  };
-}
-
-const Page = (props: Props) => {
-  const [pokeInfo, setPokeInfo] = useState<PokeType[]>([]);
+const Page = () => {
+  // クエリ文字列を受け取る
   const searchParams = useSearchParams();
   const difficulty = searchParams.get("difficulty");
+  const q = searchParams.get("q");
+
+  // クイズの描写
+  const [pokeInfo, setPokeInfo] = useState<PokeType[]>([]);
 
   useEffect(() => {
     const getIndividualPoke = async () => {
@@ -29,10 +27,25 @@ const Page = (props: Props) => {
 
     getIndividualPoke();
 
-    if (Number(props.params.q) >= 11) {
+    if (Number(q) >= 11) {
       notFound();
     }
-  }, [props.params.q, difficulty]);
+  }, [q, difficulty]);
+
+  // 正答率の集計
+  const [isCorrent, setIsCorrent] = useState<boolean[]>([]);
+
+  const aggregatedAnswer = (bool: boolean) => {
+    const newIsCorrent = [...isCorrent, bool];
+    setIsCorrent(newIsCorrent);
+  };
+
+  // isCorrentを空にする
+  useEffect(() => {
+    if (q === "1") {
+      setIsCorrent([]);
+    }
+  }, [q]);
 
   const questions = () => {
     return pokeInfo.map((poke) => {
@@ -40,18 +53,17 @@ const Page = (props: Props) => {
         <Question
           key={poke.id}
           poke={poke}
-          q={props.params.q}
+          q={q}
           difficulty={difficulty}
+          aggregatedAnswer={aggregatedAnswer}
         />
       );
     });
   };
 
   const result = () => {
-    return <Result difficulty={difficulty} />;
+    return <Result difficulty={difficulty} isCorrent={isCorrent} />;
   };
-
-  // console.log(difficulty);
 
   return (
     <div className="max-w-[768px] mx-auto mt-10">
@@ -59,7 +71,7 @@ const Page = (props: Props) => {
         <Link href={"/"}>TOP</Link>
       </div>
 
-      {props.params.q === "result" ? result() : questions()}
+      {q === "result" ? result() : questions()}
     </div>
   );
 };

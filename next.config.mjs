@@ -4,19 +4,19 @@ const nextConfig = {
     return [
       {
         source: "/question/easy",
-        destination: "/question/:q?difficulty=151",
+        destination: "/question/?difficulty=151&q=1",
       },
       {
         source: "/question/nomal",
-        destination: "/question/:q?difficulty=251",
+        destination: "/question/?difficulty=251",
       },
       {
         source: "/question/hard",
-        destination: "/question/:q?difficulty=386",
+        destination: "/question/?difficulty=386",
       },
       {
         source: "/question/veryHard",
-        destination: "/question/:q?difficulty=493",
+        destination: "/question/?difficulty=493",
       },
     ];
   },

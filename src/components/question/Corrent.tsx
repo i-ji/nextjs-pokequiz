@@ -13,16 +13,16 @@ import {
 
 interface Corrent {
   poke: PokeType;
-  q: string;
+  q: string | null;
   difficulty: string | null;
 }
 
 const Corrent = ({ poke, q, difficulty }: Corrent) => {
   const getLink = () => {
     if (q === "10") {
-      return `result?difficulty=${difficulty}`;
+      return `?difficulty=${difficulty}&q=result`;
     }
-    return `${Number(q) + 1}?difficulty=${difficulty}`;
+    return `?difficulty=${difficulty}&q=${Number(q!) + 1}`;
   };
 
   return (
@@ -36,7 +36,7 @@ const Corrent = ({ poke, q, difficulty }: Corrent) => {
         <CardContent>
           <Image
             src={poke.img}
-            alt=""
+            alt={poke.japaneseName}
             width={60}
             height={60}
             className="w-4/5 sm:w-3/5 mx-auto"

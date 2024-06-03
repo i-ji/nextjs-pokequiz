@@ -13,11 +13,12 @@ import {
 
 interface Question {
   poke: PokeType;
-  q: string;
+  q: string | null;
   difficulty: string | null;
+  aggregatedAnswer: (bool: boolean) => void;
 }
 
-const Question = ({ poke, q, difficulty }: Question) => {
+const Question = ({ poke, q, difficulty, aggregatedAnswer }: Question) => {
   const [inputText, setInputText] = useState("");
 
   const [isCorrent, setIsCorrent] = useState<boolean | null>(null);
@@ -36,11 +37,12 @@ const Question = ({ poke, q, difficulty }: Question) => {
     if (inputText === "") return;
 
     if (poke.japaneseName === hiraToKana(symbolTokana(inputText))) {
+      aggregatedAnswer(true);
       setIsCorrent(true);
     } else {
+      aggregatedAnswer(false);
       setIsCorrent(false);
     }
-    // inputResult(isCorrent!);
 
     setInputText("");
   };

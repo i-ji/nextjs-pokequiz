@@ -2,9 +2,7 @@ import React from "react";
 import Link from "next/link";
 import {
   Card,
-  CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -13,8 +11,8 @@ const Defficulty = () => {
   return (
     <div className="px-5 mt-10 space-y-5 flex flex-col">
       <Link
-        href={{ pathname: "/question/1", query: { difficulty: 151 } }}
-        // as="/question/easy"
+        href={{ pathname: "/question", query: { difficulty: 151, q: 1 } }}
+        // as={`/question/easy`}
       >
         <Card className="border border-[#ffde00]">
           <CardHeader>
@@ -24,7 +22,7 @@ const Defficulty = () => {
         </Card>
       </Link>
 
-      <Link href={{ pathname: "/question/1", query: { difficulty: 251 } }}>
+      <Link href={{ pathname: "/question", query: { difficulty: 251, q: 1 } }}>
         <Card className="border border-[#ffde00]">
           <CardHeader>
             <CardTitle className="mb-2">正常的</CardTitle>
@@ -35,7 +33,7 @@ const Defficulty = () => {
         </Card>
       </Link>
 
-      <Link href={{ pathname: "/question/1", query: { difficulty: 386 } }}>
+      <Link href={{ pathname: "/question", query: { difficulty: 386, q: 1 } }}>
         <Card className="border border-[#ffde00]">
           <CardHeader>
             <CardTitle className="mb-2">难的</CardTitle>
@@ -46,7 +44,7 @@ const Defficulty = () => {
         </Card>
       </Link>
 
-      <Link href={{ pathname: "/question/1", query: { difficulty: 493 } }}>
+      <Link href={{ pathname: "/question", query: { difficulty: 493, q: 1 } }}>
         <Card className="border border-[#ffde00]">
           <CardHeader>
             <CardTitle className="mb-2">很难</CardTitle>
