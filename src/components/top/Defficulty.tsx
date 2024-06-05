@@ -9,7 +9,7 @@ import {
 
 const Defficulty = () => {
   return (
-    <div className="px-5 mt-10 space-y-5 flex flex-col">
+    <div className="px-5 mt-10 space-y-5 flex flex-col pb-10">
       <Link
         href={{ pathname: "/question", query: { difficulty: 151, q: 1 } }}
         // as={`/question/easy`}

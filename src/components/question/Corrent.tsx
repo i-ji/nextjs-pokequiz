@@ -5,11 +5,11 @@ import { PokeType } from "@/app/types";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { hangulToKana } from "@/app/utils";
 
 interface Corrent {
   poke: PokeType;
@@ -18,6 +18,7 @@ interface Corrent {
 }
 
 const Corrent = ({ poke, q, difficulty }: Corrent) => {
+  // 次の問題orリザルトへのリンク
   const getLink = () => {
     if (q === "10") {
       return `?difficulty=${difficulty}&q=result`;
@@ -30,13 +31,13 @@ const Corrent = ({ poke, q, difficulty }: Corrent) => {
       <Card className="w-4/5 sm:w-3/5 mx-auto">
         <CardHeader>
           <CardTitle className=" text-3xl sm:text-4xl">
-            {poke.japaneseName}
+            {hangulToKana(poke.japaneseName)}
           </CardTitle>
         </CardHeader>
         <CardContent>
           <Image
             src={poke.img}
-            alt={poke.japaneseName}
+            alt={hangulToKana(poke.japaneseName)}
             width={60}
             height={60}
             className="w-4/5 sm:w-3/5 mx-auto"

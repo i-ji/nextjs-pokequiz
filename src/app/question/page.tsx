@@ -16,7 +16,6 @@ const Page = () => {
 
   // クイズの描写
   const [pokeInfo, setPokeInfo] = useState<PokeType[]>([]);
-
   useEffect(() => {
     const getIndividualPoke = async () => {
       const res = await fetch(`/api?difficulty=${difficulty}`).then((res) =>
@@ -34,7 +33,6 @@ const Page = () => {
 
   // 正答率の集計
   const [isCorrent, setIsCorrent] = useState<boolean[]>([]);
-
   const aggregatedAnswer = (bool: boolean) => {
     const newIsCorrent = [...isCorrent, bool];
     setIsCorrent(newIsCorrent);
@@ -66,9 +64,9 @@ const Page = () => {
   };
 
   return (
-    <div className="max-w-[768px] mx-auto mt-10">
+    <div className="max-w-[768px] mx-auto mt-10 pb-10">
       <div className="text-right mr-5">
-        <Link href={"/"}>TOP</Link>
+        <Link href={"/"}>首页</Link>
       </div>
 
       {q === "result" ? result() : questions()}

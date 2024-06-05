@@ -10,6 +10,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { hangulToKana } from "@/app/utils";
+import { modifiedQuestion } from "@/app/utils";
 
 interface Question {
   poke: PokeType;
@@ -21,22 +23,23 @@ interface Question {
 const Question = ({ poke, q, difficulty, aggregatedAnswer }: Question) => {
   const [inputText, setInputText] = useState("");
 
-  const [isCorrent, setIsCorrent] = useState<boolean | null>(null);
-
-  const inputRef = useRef<HTMLInputElement>(null);
-
   // フォーカスを当てる
+  const inputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
 
   // 回答した際の処理
+  const [isCorrent, setIsCorrent] = useState<boolean | null>(null);
   const answerPoke = (e: FormEvent) => {
     e.preventDefault();
 
     if (inputText === "") return;
 
-    if (poke.japaneseName === hiraToKana(symbolTokana(inputText))) {
+    if (
+      hangulToKana(poke.japaneseName) ===
+      symbolTokana(hiraToKana(inputText)).trim()
+    ) {
       aggregatedAnswer(true);
       setIsCorrent(true);
     } else {
@@ -50,9 +53,9 @@ const Question = ({ poke, q, difficulty, aggregatedAnswer }: Question) => {
   //結果判別
   const isJudgment = () => {
     if (isCorrent) {
-      return <div>正解!</div>;
+      return "正解!";
     } else if (isCorrent === false) {
-      return <div>不正解...</div>;
+      return "不正解...";
     } else if (isCorrent === null) {
       return <div></div>;
     }
@@ -62,8 +65,7 @@ const Question = ({ poke, q, difficulty, aggregatedAnswer }: Question) => {
     <div className="text-center space-y-5">
       <p>Q{q} このポケモンの名前は？</p>
       <h1 className="font-bold text-3xl sm:text-4xl">
-        {poke.chineseName}
-        {/* {poke.japaneseName} */}
+        {modifiedQuestion(poke.chineseName)}
       </h1>
 
       <form onSubmit={answerPoke}>
@@ -75,7 +77,10 @@ const Question = ({ poke, q, difficulty, aggregatedAnswer }: Question) => {
           disabled={isCorrent !== null}
           ref={inputRef}
         />
-        <button className="bg-[#ffde00] p-1 text-[#de2910] rounded">
+        <button
+          className="bg-[#ffde00] p-1 text-[#de2910] rounded"
+          disabled={isCorrent !== null}
+        >
           こたえ
         </button>
       </form>
@@ -94,13 +99,13 @@ const Question = ({ poke, q, difficulty, aggregatedAnswer }: Question) => {
           <AccordionItem value="item-1">
             <AccordionTrigger>ポケモンの分類を見る</AccordionTrigger>
             <AccordionContent className="text-left">
-              {poke.genera}
+              {hangulToKana(poke.genera)}
             </AccordionContent>
           </AccordionItem>
         </Accordion>
       </div>
 
-      {isJudgment()}
+      <div className="font-bold text-xl">{isJudgment()}</div>
 
       {isCorrent !== null && (
         <Corrent poke={poke} q={q} difficulty={difficulty} />

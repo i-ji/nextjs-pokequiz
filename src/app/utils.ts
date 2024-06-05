@@ -75,13 +75,46 @@ export function hiraToKana(str: string) {
   });
 }
 
-// ♂,♀をカタカナにする処理
+// 入力した回答の修正
 export function symbolTokana(str: string) {
-  if (str === "ニドランオす") {
-    return str.replace("オす", "♂");
-  } else if (str === "ニドランメす") {
-    return str.replace("メす", "♀");
-  } else {
-    return str;
+  switch (str) {
+    case "ニドランオス":
+      return str.replace("オス", "♂");
+    case "ニドランメス":
+      return str.replace("メス", "♀");
+    case "ポリゴン2":
+      return str.replace("ポリゴン2", "ポリゴン２");
+    case "ポリゴンZ":
+      return str.replace("ポリゴンZ", "ポリゴンＺ");
+    case "ポリゴンz":
+      return str.replace("ポリゴンz", "ポリゴンＺ");
+    default:
+      return str;
+  }
+}
+
+// 答え、分類の修正
+export function hangulToKana(str: string) {
+  switch (str) {
+    case "초라기":
+      return str.replace("초라기", "チョンチー");
+    case "아귀포켓몬":
+      return str.replace("아귀포켓몬", "あんこうポケモン");
+    case "Purugly":
+      return str.replace("Purugly", "ブニャット");
+    case "Pokémon Tigre Gato":
+      return str.replace("Pokémon Tigre Gato", "とらねこポケモン");
+    default:
+      return str;
+  }
+}
+
+// 問題文の修正
+export function modifiedQuestion(str: string) {
+  switch (str) {
+    case "몬냥이":
+      return str.replace("몬냥이", "東施喵");
+    default:
+      return str;
   }
 }

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Desc from "@/components/top/Description";
 import Defficulty from "@/components/top/Defficulty";
 
