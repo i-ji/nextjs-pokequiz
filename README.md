@@ -1,12 +1,18 @@
-# The-View
-  中国語で出題されたポケモンの名前を当てるクイズを作成しました。<br >
-  以前、ポケモン実況者の方が配信していたのを見て、「これは面白い」と思ったことが作ろうと思ったきっかけです。
-  <img width="1400" src="https://private-user-images.githubusercontent.com/109803750/348456092-d6f6086a-5bb8-45eb-8d86-b4d3baedbfcc.jpeg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjA4NTUxNTcsIm5iZiI6MTcyMDg1NDg1NywicGF0aCI6Ii8xMDk4MDM3NTAvMzQ4NDU2MDkyLWQ2ZjYwODZhLTViYjgtNDVlYi04ZDg2LWI0ZDNiYWVkYmZjYy5qcGVnP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI0MDcxMyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNDA3MTNUMDcxNDE3WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZjA2NDM1M2ZlZGJlNDhlZjhjODI1ZWQ2ODllNDcxYWQ4MGIwYTEzOTFiMjFjMzgzZTY4NWY3NzMwOTU5MWU5MSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmYWN0b3JfaWQ9MCZrZXlfaWQ9MCZyZXBvX2lkPTAifQ.vkF4O5qqB5uaFWq5ZDVgnqhXxGMLSZpujWZr5iJxaMw" />
+## The-View
+ <img width="1064" src="https://github.com/user-attachments/assets/8b4bd2bd-1f7c-4740-985e-04fc7e62e211">
 
-# URL
-https://nextjs-pokequiz.vercel.app/]
+## URL
+こちらのリンクよりご利用ください。<br>
 
-# 使用技術
+https://nextjs-pokequiz.vercel.app/
+
+## サービスへの想い
+私はポケモンが好きでポケモンゲーム配信をたまに見ているが、その中で目を引く企画があった。<br>
+それがポケモン中国語クイズである。<br>
+ポケモンの名前が中国語で出題され、漢字からどんなポケモンかを推測する推理ゲームのようで心が奪われた。<br>
+プログラミングの学習を進めていくうちにPokeAPIというポケモンの細かな情報が記載されたAPIを知り、制作に取り掛かりました。
+
+## 使用技術
 - React 18
 - Next.js 14.2.3
 - TypeScript 5
