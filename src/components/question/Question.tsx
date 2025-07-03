@@ -1,8 +1,8 @@
 "use clietn";
 
-import React, { FormEvent, useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import { PokeType } from "@/app/types";
-import { symbolTokana, typeTranlate, hiraToKana } from "@/app/utils";
+import { typeTranlate } from "@/app/utils";
 import Corrent from "./Corrent";
 import {
   Accordion,
@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/accordion";
 import { hangulToKana } from "@/app/utils";
 import { modifiedQuestion } from "@/app/utils";
+import { useQuestionState } from "@/utils/hooks/question/useQuestionState";
 
 interface Question {
   poke: PokeType;
@@ -21,45 +22,21 @@ interface Question {
 }
 
 const Question = ({ poke, q, difficulty, aggregatedAnswer }: Question) => {
-  const [inputText, setInputText] = useState("");
+  const {
+    inputText,
+    setInputText,
+    isCorrent,
+    inputRef,
+    answerPoke,
+    isJudgment,
+    linkRef,
+  } = useQuestionState({ poke, aggregatedAnswer });
 
-  // フォーカスを当てる
-  const inputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
-
-  // 回答した際の処理
-  const [isCorrent, setIsCorrent] = useState<boolean | null>(null);
-  const answerPoke = (e: FormEvent) => {
-    e.preventDefault();
-
-    if (inputText === "") return;
-
-    if (
-      hangulToKana(poke.japaneseName) ===
-      symbolTokana(hiraToKana(inputText)).trim()
-    ) {
-      aggregatedAnswer(true);
-      setIsCorrent(true);
-    } else {
-      aggregatedAnswer(false);
-      setIsCorrent(false);
+    if (isCorrent !== null && linkRef.current) {
+      linkRef.current.scrollIntoView({ behavior: "smooth" });
     }
-
-    setInputText("");
-  };
-
-  //結果判別
-  const isJudgment = () => {
-    if (isCorrent) {
-      return "正解!";
-    } else if (isCorrent === false) {
-      return "不正解...";
-    } else if (isCorrent === null) {
-      return <div></div>;
-    }
-  };
+  }, [isCorrent, linkRef]);
 
   return (
     <div className="text-center space-y-5">
@@ -108,7 +85,7 @@ const Question = ({ poke, q, difficulty, aggregatedAnswer }: Question) => {
       <div className="font-bold text-xl">{isJudgment()}</div>
 
       {isCorrent !== null && (
-        <Corrent poke={poke} q={q} difficulty={difficulty} />
+        <Corrent poke={poke} q={q} difficulty={difficulty} linkRef={linkRef} />
       )}
     </div>
   );

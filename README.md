@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## The-View
 
-## Getting Started
+ <img width="1064" src="https://github.com/user-attachments/assets/8b4bd2bd-1f7c-4740-985e-04fc7e62e211">
 
-First, run the development server:
+## URL
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+https://nextjs-pokequiz.vercel.app/
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 概要
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+このアプリは PokeAPI を活用して作成したポケモン中国語クイズです。<br>
+中国語で問題が出題され、漢字から予想してどのポケモンか当てるクイズです。<br>
+難易度設定やヒントを搭載しており、初代ポケモンしかプレイしたことない人でも楽しめるようになっています。<br>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## サービスへの想い
 
-## Learn More
+あるポケモン実況者が配信していた「中国語でポケモンを当てるクイズ」がとても面白く、自分でも遊びたくなって制作しました。<br>
+ひらがな入力への対応、最初から入力欄にフォーカスされている設計、その他何回もプレイして気になった細かい点の修正など、ユーザー体験の向上にもこだわっています。
 
-To learn more about Next.js, take a look at the following resources:
+## 使用技術
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- フロントエンド React 18 Next.js 14.2.3 TypeScript 5
+- スタイリング Tailwind CSS 3.4.1 shadcn/ui
+- デプロイ vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 作者について
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<a href="https://github.com/i-ji">@j-ito</a> <br>
+<a href="https://j-ito-portfolio.vercel.app/">ポートフォリオ</a>

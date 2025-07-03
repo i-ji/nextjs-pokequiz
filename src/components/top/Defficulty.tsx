@@ -8,52 +8,44 @@ import {
 } from "@/components/ui/card";
 
 const Defficulty = () => {
+  const difficultyLevelList = [
+    { difficulty: 151, title: "简单的", desc: "第一世代のポケモンが出ます。" },
+    {
+      difficulty: 251,
+      title: "正常的",
+      desc: " 第一世代~第二世代のポケモンが出ます。",
+    },
+    {
+      difficulty: 386,
+      title: "难的",
+      desc: "第一世代~第三世代のポケモンが出ます。",
+    },
+    {
+      difficulty: 493,
+      title: "很难",
+      desc: "第一世代~第四世代のポケモンが出ます。",
+    },
+  ];
   return (
     <div className="px-5 mt-10 space-y-5 flex flex-col pb-10">
-      <Link
-        href={{ pathname: "/question", query: { difficulty: 151, q: 1 } }}
-        // as={`/question/easy`}
-      >
-        <Card className="border border-[#ffde00]">
-          <CardHeader>
-            <CardTitle className="mb-2">简单的</CardTitle>
-            <CardDescription>第一世代のポケモンが出ます。</CardDescription>
-          </CardHeader>
-        </Card>
-      </Link>
-
-      <Link href={{ pathname: "/question", query: { difficulty: 251, q: 1 } }}>
-        <Card className="border border-[#ffde00]">
-          <CardHeader>
-            <CardTitle className="mb-2">正常的</CardTitle>
-            <CardDescription>
-              第一世代~第二世代のポケモンが出ます。
-            </CardDescription>
-          </CardHeader>
-        </Card>
-      </Link>
-
-      <Link href={{ pathname: "/question", query: { difficulty: 386, q: 1 } }}>
-        <Card className="border border-[#ffde00]">
-          <CardHeader>
-            <CardTitle className="mb-2">难的</CardTitle>
-            <CardDescription>
-              第一世代~第三世代のポケモンが出ます。
-            </CardDescription>
-          </CardHeader>
-        </Card>
-      </Link>
-
-      <Link href={{ pathname: "/question", query: { difficulty: 493, q: 1 } }}>
-        <Card className="border border-[#ffde00]">
-          <CardHeader>
-            <CardTitle className="mb-2">很难</CardTitle>
-            <CardDescription>
-              第一世代~第四世代のポケモンが出ます。
-            </CardDescription>
-          </CardHeader>
-        </Card>
-      </Link>
+      {difficultyLevelList.map((list) => {
+        return (
+          <Link
+            href={{
+              pathname: "/question",
+              query: { difficulty: list.difficulty, q: 1 },
+            }}
+            key={list.difficulty}
+          >
+            <Card className="border border-[#ffde00]">
+              <CardHeader>
+                <CardTitle className="mb-2">{list.title}</CardTitle>
+                <CardDescription>{list.desc}</CardDescription>
+              </CardHeader>
+            </Card>
+          </Link>
+        );
+      })}
     </div>
   );
 };

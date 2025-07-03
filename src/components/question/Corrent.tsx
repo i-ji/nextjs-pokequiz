@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PokeType } from "@/app/types";
@@ -15,9 +15,10 @@ interface Corrent {
   poke: PokeType;
   q: string | null;
   difficulty: string | null;
+  linkRef: React.RefObject<HTMLAnchorElement>;
 }
 
-const Corrent = ({ poke, q, difficulty }: Corrent) => {
+const Corrent = ({ poke, q, difficulty, linkRef }: Corrent) => {
   // 次の問題orリザルトへのリンク
   const getLink = () => {
     if (q === "10") {
@@ -45,7 +46,7 @@ const Corrent = ({ poke, q, difficulty }: Corrent) => {
         </CardContent>
         <CardFooter>
           <div className="ml-auto">
-            <Link href={`${getLink()}`}>
+            <Link href={`${getLink()}`} ref={linkRef}>
               {q === "10" ? "結果を見る" : "次の問題へ"}
             </Link>
           </div>
